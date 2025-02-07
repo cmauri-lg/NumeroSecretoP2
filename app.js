@@ -14,15 +14,22 @@ function verificarIntento(){
     //Triple comparacion para ver si es mismo valor mismo tipo de dato
     if(numeroDeUsuario === numeroSecreto){
         asignarTextoElemento('p',`Acertaste el numero en ${intentos} ${intentos === 1 ? 'vez' : 'veces'}`);
+        document.getElementById('reiniciar').removeAttribute('disabled');
     }else{
+        //El usuario no acerto 
         if(numeroDeUsuario>numeroSecreto){
             asignarTextoElemento('p','El numero es menor');
         }else{
             asignarTextoElemento('p','El numero es mayor');
         }
         intentos++;//Incremento
+        limpiarCaja();
     }
     return;//No retorna nada pero se coloca como buena practica
+}
+
+function limpiarCaja(){
+    document.querySelector('#valorUsuario').value = '';
 }
 
 function generarNumeroSecreto() {
