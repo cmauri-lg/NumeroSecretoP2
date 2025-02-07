@@ -9,11 +9,13 @@ function asignarTextoElemento(elemento, texto){
 
 function verificarIntento(){
     let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);//Por tener solo un input, si no usar funcion.
-    console.log(typeof(numeroDeUsuario));
-    console.log(typeof(numeroSecreto));
-    console.log(numeroDeUsuario);
-    console.log(numeroSecreto);
-    console.log(numeroDeUsuario === numeroSecreto);//Triple comparacion para ver si es mismo valor mismo tipo de dato
+    
+    //Triple comparacion para ver si es mismo valor mismo tipo de dato
+    if(numeroDeUsuario === numeroSecreto){
+        asignarTextoElemento('p','Acertaste el numero');
+    }else{
+        asignarTextoElemento('p','No acertaste');
+    }
     return;//No retorna nada pero se coloca como buena practica
 }
 
