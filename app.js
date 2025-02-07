@@ -1,12 +1,14 @@
 //Variable de ambito global
 let numeroSecreto = 0;
 let intentos = 1; //Contador
+let listaNumerosSorteados = [];
 
 function asignarTextoElemento(elemento, texto){
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto;
     return;
 }
+
 function verificarIntento(){
     let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);//Por tener solo un input, si no usar funcion.
     
@@ -31,8 +33,18 @@ function limpiarCaja(){
     document.querySelector('#valorUsuario').value = '';
 }
 
-function generarNumeroSecreto() {
-    return Math.floor(Math.random()*10)+1;
+function generarNumeroSecreto() { 
+    let numeroGenerado = Math.floor(Math.random()*10)+1;
+    console.log(numeroGenerado);
+    console.log(listaNumerosSorteados);
+    //Si el numero generado esta incluido en la lista
+    if (listaNumerosSorteados.includes(numeroGenerado)) {
+        //Recursividad para que me genera un numero distinto
+        return generarNumeroSecreto();
+    }else{
+        listaNumerosSorteados.push(numeroGenerado);
+        return numeroGenerado;
+    }
 }
 
 function condicionesIniciales(){
