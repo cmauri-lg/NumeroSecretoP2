@@ -14,7 +14,11 @@ function verificarIntento(){
     if(numeroDeUsuario === numeroSecreto){
         asignarTextoElemento('p','Acertaste el numero');
     }else{
-        asignarTextoElemento('p','No acertaste');
+        if(numeroDeUsuario>numeroSecreto){
+            asignarTextoElemento('p','El numero es menor');
+        }else{
+            asignarTextoElemento('p','El numero es mayor');
+        }
     }
     return;//No retorna nada pero se coloca como buena practica
 }
